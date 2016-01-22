@@ -6,7 +6,7 @@ This is a draft version, please be patient while we get this working.
 ### Prerequisites
 Before you get started you must install <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> and <a href="https://www.vagrantup.com/downloads.html">Vagrant</a>
 
-To get a copy of the sanitised Warmshowers.org database you must introduce yourself to the <a href="mailto:andrew@kalpaitch.com">project maintainers</a> and supply us with your public key. For more information please read <a href="https://help.github.com/articles/generating-an-ssh-key/">Github's guide on generating public your public key</> or contact us.
+To get a copy of the sanitised Warmshowers.org database you must introduce yourself to the <a href="mailto:andrew@kalpaitch.com">project maintainers</a> and supply us with your public key. For more information please read <a href="https://help.github.com/articles/generating-an-ssh-key/">Github's guide on generating public your public key</a> or contact us.
 
 ### Getting started
 To get started run:
