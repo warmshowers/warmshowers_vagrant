@@ -28,10 +28,14 @@ apt-get install mysql-server -y
 
 # Nginx Configuration
 echo "Configuring Nginx"
-cp /var/www/provision/config/nginx_vhost /etc/nginx/sites-available/nginx_vhost
-ln -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/
+cp -rT /vagrant/provision/config/nginx/ /etc/nginx/
+ln -s /etc/nginx/sites-available/wsupg.dev /etc/nginx/sites-enabled/wsupg.dev
 
 rm -rf /etc/nginx/sites-available/default
+
+# Getting the database
+
+# Getting the repository
 
 # Restart Nginx for the config to take effect
 service nginx restart
