@@ -24,7 +24,7 @@ EOF
 
 # Nginx
 echo "Installing Nginx"
-apt-get install nginx -y
+apt-get install nginx nginx-extras -y
 
 # PHP
 echo "Installing PHP"
@@ -50,6 +50,11 @@ cp -rT /vagrant/provision/config/nginx/ /etc/nginx/
 ln -sf /etc/nginx/sites-available/wsupg.dev /etc/nginx/sites-enabled/wsupg.dev
 
 rm -rf /etc/nginx/sites-enabled/default
+
+# Nginx microcache
+mkdir /var/cache/nginx/
+mkdir /var/cache/nginx/microcache/
+chown www-data:www-data /var/cache/nginx/microcache
 
 # Test ssh connection to test server
 status=$(ssh -q -o BatchMode=yes -o ConnectTimeout=5 vagrant@wsupg.net echo ok 2>&1)
