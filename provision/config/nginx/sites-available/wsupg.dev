@@ -51,10 +51,6 @@ server {
     keepalive_timeout 75 75;
 
     ## See the keepalive_timeout directive in nginx.conf.
-    ## Server certificate and key.
-    ssl_certificate /etc/ssl/crt/STAR_warmshowers_org_chained.crt;
-    ssl_certificate_key /etc/ssl/crt/warmshowers.org.key;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
     return 301 $scheme://www.wsupg.dev$request_uri;
 
