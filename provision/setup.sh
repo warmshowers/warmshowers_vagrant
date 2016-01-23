@@ -52,8 +52,8 @@ ln -sf /etc/nginx/sites-available/wsupg.dev /etc/nginx/sites-enabled/wsupg.dev
 rm -rf /etc/nginx/sites-enabled/default
 
 # Nginx microcache
-mkdir /var/cache/nginx/
-mkdir /var/cache/nginx/microcache/
+mkdir -p /var/cache/nginx/
+mkdir -p /var/cache/nginx/microcache/
 chown www-data:www-data /var/cache/nginx/microcache
 
 # Test ssh connection to test server
@@ -90,6 +90,6 @@ rsync --progress vagrant@wsupg.net:~/vm-config/settings.private.php /var/www/wsu
 
 
 # Restart Nginx for the config to take effect
-service nginx restart
+sudo service nginx restart
 
 echo "Finished provisioning"
