@@ -69,7 +69,7 @@ fi
 # Getting the database
 echo "Gonna get you a database now, please be patient"
 mkdir -p /var/backup
-# rsync --progress vagrant@wsupg.net:~/vm-config/ws-sanitised.db /var/backup/
+rsync --progress vagrant@wsupg.net:~/vm-config/ws-sanitised.db /var/backup/
 
 echo "Importing database"
 mysql -u root -p1234 < /var/backup/ws-sanitised.db

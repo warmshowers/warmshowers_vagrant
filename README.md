@@ -12,7 +12,7 @@ To get a copy of the sanitised Warmshowers.org database you must introduce yours
 To get started run:
 ```
 git clone -b master https://github.com/warmshowers/warmshowers_vagrant ws
-cd ws && vagrant up
+cd ws && vagrant up wsupg
 ```
 
 This will bring up a virtual machine and provision it with a copy of the warmshowers.org project.
