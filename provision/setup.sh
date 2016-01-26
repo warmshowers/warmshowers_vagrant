@@ -13,7 +13,7 @@ apt-get install git -y
 echo "Installig Rsync"
 apt-get -y install rsync
 
-# Allow non-strict hsot key checking
+# Allow non-strict host key checking
 touch ~/.ssh/config
 cat <<EOF > ~/.ssh/config
 Host wsupg.net
@@ -33,7 +33,11 @@ apt-get install php5-common php5-dev php5-cli php5-fpm -y
 echo "Installing PHP extensions"
 apt-get install curl php5-curl php5-gd php5-mcrypt php5-mysql -y
 
-# Composer - we may use this soon
+# Composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Drush
+composer global require drush/drush:7.*
 
 # MySQL 
 echo "Preparing MySQL"
@@ -66,13 +70,17 @@ echo "Can't connect to vagrant@wsupg.net, please contact project maintainers"
 exit
 fi
 
+# Configure Drush Aliases
+mkdir -p ~/.drush
+cp -rT /vagrant/provision/config/drush/ ~/.drush
+
 # Getting the database
-echo "Gonna get you a database now, please be patient"
-mkdir -p /var/backup
-rsync --progress vagrant@wsupg.net:~/vm-config/ws-sanitised.db /var/backup/
+#echo "Gonna get you a database now, please be patient"
+#mkdir -p /var/backup
+#rsync --progress vagrant@wsupg.net:~/vm-config/ws-sanitised.db /var/backup/
 
 echo "Importing database"
-mysql -u root -p1234 < /var/backup/ws-sanitised.db
+#mysql -u root -p1234 < /var/backup/ws-sanitised.db
 
 # Getting the repository
 echo "Cloning the repository"
@@ -85,9 +93,6 @@ git clone -b site_d7 git@github.com:warmshowers/Warmshowers.org.git wsupg.dev
 echo "Configuring Drupal"
 cp /vagrant/provision/config/drupal/settings.local.php /var/www/wsupg.dev/docroot/sites/default/settings.local.php
 rsync --progress vagrant@wsupg.net:~/vm-config/settings.private.php /var/www/wsupg.dev/docroot/sites/default/
-
-# Add host entries
-
 
 # Restart Nginx for the config to take effect
 sudo service nginx restart
