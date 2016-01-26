@@ -36,18 +36,12 @@ Vagrant.configure(2) do |config|
     node.vm.network :private_network, ip: '192.168.42.42'
     node.hostmanager.aliases = %w(www.wsupg.dev fr.wsupg.dev es.wsupg.dev)
 
-    config.vm.synced_folder "src",
+    config.vm.synced_folder "./src",
                             "/var/www/wsupg",
                             :nfs => true,
                             :linux__nfs_options => ["rw,no_subtree_check,async,all_squash"],
                             :bsd__nfs_options => ["rw,no_subtree_check,async,all_squash"]
   end
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
 
   # Providers
   # config.vm.provider "virtualbox" do |vb|

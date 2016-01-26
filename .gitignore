@@ -1,3 +1,5 @@
 # Ignore temporary directories
 tmp/
 .vagrant/
+src/
+!src/.gitkeep
